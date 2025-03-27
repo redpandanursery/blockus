@@ -1,2 +1,86 @@
 <title>Blockus</title>
+<script>
+  var referenceCount = 0 ;
+  function newGlobalReference(obj){
+    referenceCount++ ;
+    window["globalRef"+referenceCount] = obj ;
+    return "globalRef"+referenceCount ;
+  }
+</script>
 <script src="jquery.js"></script>
+<script src="game.js"></script>
+<script src="board.js"></script>
+<script src="piece.js"></script>
+<script src="player.js"></script>
+<script src="playerList.js"></script>
+<script src="playerPieces.js"></script>
+<script src="square.js"></script>
+<script src="goal.js"></script>
+<script src="goals.js"></script>
+<script src="controlPanel.js"></script>
+<script src="gameSync.js"></script>
+<script src="sendSync.js"></script>
+<script src="selectGame.js"></script>
+<script src="syncEvent.js"></script>
+
+<style type="text/css">
+  body,html {
+    margin:0px;
+    padding:0px;
+  }
+
+  .board .square {
+    float: left ;
+    width:18px ;
+    height:18px ; 
+    border:1px solid #7a9864;
+    cursor:pointer;
+  }
+
+  .board .goal {
+    font-size:25px;
+    text-align:center;
+  }
+
+  .board .achieved {
+    color:rgb(74, 74, 144) ;
+  }
+
+  .boardviewer {
+    width:calc(100% - 300px);
+    margin-left:300px;
+    height:100%;
+    overflow:scroll;
+  }
+
+  .controlpanel {
+    width:300px;
+    height:100%;
+    background-color:#425143;
+    position:absolute;
+    color:#c5cac2;
+    font-family:calibri;
+    font-size:larger;
+  }
+
+  .piece .square {
+    background-color:rgb(197, 214, 190);border:1px solid 425143;
+  }
+
+  .piece:hover .square {
+    background-color:rgb(141, 150, 137);
+  }
+
+</style>
+
+<div class="controlpanel"></div>
+<div class="boardviewer"></div>
+
+<script>
+  var game = new Game() ;
+  var selectGame = new SelectGame() ;
+  
+  game.setGameId(1) ;
+  game.setPlayerNumber(1) ;
+  //game.runSetup();
+</script>
